@@ -1,55 +1,47 @@
 # Java Rush Hour Puzzle Solver
+
 ![](test/example.gif)
 
-This project is a Java-based solver for Rush Hour.\
-It supports multiple search algorithms and heuristics to find solutions efficiently.
+A Java-based solver for Rush Hour puzzle configurations utilizing graph search algorithms and admissible heuristics. Built for IF2211 (Algorithm Strategy) at STEI ITB.
+
+---
 
 ## Features
 
-- Supports GBFS, UCS, and A* search algorithms
-- Multiple heuristics: BLOCKING_PIECES, EXIT_DISTANCE, BLOCKING_DISTANCE
-- Board parsing from file
-- Solution replay in the console
+- Search algorithms: Greedy Best-First Search (GBFS), Uniform Cost Search (UCS), and A* Search
+- Heuristic functions: `BLOCKING_PIECES`, `EXIT_DISTANCE`, and `BLOCKING_DISTANCE`
+- Configurable puzzle board parsing from structured text files
+- Step-by-step ASCII solution replay in the console
 
+---
 
-## Usage
+## Getting Started
 
-### Option 1: Run with the JAR
-
-```
+### Option 1: Run with Pre-Built JAR
+```bash
 java -jar bin/Rush.jar <file> <algorithm> [heuristic]
 ```
 
-### Option 2: Compile and Run Manually
-
-```
+### Option 2: Compile and Run from Source
+```bash
 javac -d out src/**/*.java
 java -cp out Main <file> <algorithm> [heuristic]
 ```
 
-- `<file>`: Path to the puzzle input file
-- `<algorithm>`: GBFS, UCS, or A_STAR
-- `[heuristic]`: (Optional) BLOCKING_PIECES, EXIT_DISTANCE, or BLOCKING_DISTANCE
+- `<file>`: Path to puzzle input file (e.g. `puzzles/level1.txt`)
+- `<algorithm>`: `GBFS`, `UCS`, or `A_STAR`
+- `[heuristic]`: (Optional for A*) `BLOCKING_PIECES`, `EXIT_DISTANCE`, or `BLOCKING_DISTANCE`
 
-Example:
-
-```
+**Example:**
+```bash
 java -jar bin/Rush.jar puzzles/level1.txt A_STAR BLOCKING_DISTANCE
 ```
-or
-```
-java -cp out Main puzzles/level1.txt A_STAR BLOCKING_DISTANCE
-```
+
+---
 
 ## Input File Format
 
-1. First line: `<rows> <cols>`
-2. Second line: Number of pieces (excluding the primary piece)
-3. Next lines: Board layout, using characters for pieces and `K` for the exit
-
-Example:
-
-```
+```text
 6 6
 12
 AAB..F
@@ -59,11 +51,18 @@ GH.III
 GHJ...
 LLJMM.
 ```
+- Line 1: Dimensions `<rows> <cols>`
+- Line 2: Number of blocking pieces
+- Remaining lines: Board layout with single-letter piece identifiers (`K` indicates exit target)
 
-## Project Structure
+---
 
-- `src/Main.java`: Entry point
-- `src/Game/Parser.java`: Input file parser
-- `src/Game/Board.java`: Board representation
-- `src/Game/Pieces/`: Classes representing puzzle pieces
-- `src/Algorithm/`: Search algorithms and heuristics
+## Author
+
+Darrel Adinarya Sunanda `13523061` — [@Darsua](https://github.com/Darsua)
+
+---
+
+## License
+
+MIT
